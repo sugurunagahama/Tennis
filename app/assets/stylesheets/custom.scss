@@ -1,0 +1,147 @@
+h1,h2,h3,h4 {
+  font_weight: 90;
+}
+
+.text-black {
+  color: #000;
+}
+.text-white {
+  color: #fff;
+}
+
+.information {
+padding-top: 220px;
+}
+
+.btn-top {
+   display: inline-block;
+  text-decoration: none;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+  transition: .4s;
+  
+
+  &:hover {
+    -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
+  }
+}
+
+.top {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url('top.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+.top-container {
+  padding-top: 220px;
+  h1 {
+    font-size: 56px;
+    margin-bottom: 50px;
+  }
+
+  h2 {
+    margin-bottom: 50px;
+  }
+}
+
+
+
+
+
+
+
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+}
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+a.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+
+.form-control {
+  height: 45px;
+}
+
+.users-new-wrapper {
+  width: 100vw;
+  height: 120vh;
+  background-image: image-url('index.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+
+  .users-new-container {
+    padding-top: 220px;
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
+.alert {
+  margin-bottom: 1em;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
+.btn-blue{
+  position: relative;
+  display: inline-block;
+  font-weight: 120px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-left: solid 4px #668ad8;
+  border-right: solid 4px #668ad8;
+  color: #668ad8;
+  text-shadow: 0 0 5px white;
+  padding: 0.5em 1em;
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  transition: .4s;
+
+  &:hover {
+    background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 5px,#e9f4ff 5px, #e9f4ff 9px);
+  }
+}
+
+
+
+.navbar-transparent {
+  margin-bottom: 0px;
+  background-color: rgba(0,0,0,0.5);
+  a {
+    color: #fff !important;
+  }
+
+  .navbar-brand {
+    padding: 0px;
+    margin-top: 15px;
+  }
+
+  img {
+    height: 40px;
+  }
+}
