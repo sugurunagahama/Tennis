@@ -1,0 +1,38 @@
+<div class="court-index-wrapper">
+  <div class="container">
+      <div class="search text-center">
+      <%= search_form_for @q do |f| %><!--検索機能-->
+        <%= f.label :name, "コート名キーワード" %>
+        <%= f.search_field :name_cont %><!--:name_contはransackの部分一致-->
+        <%= f.submit "検索" %>
+      
+        <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name%><!--eqはransackの一致、prefectureを元に選択ボックス作成-->
+        <%= f.submit "検索" %>
+      <% end %>
+      
+      </div>
+    <% @courts.each do |court| %><!--コート一覧表示-->
+     
+      <div class="row">
+        <div class="col-md-offset-1 col-md-5 ">
+          <div class="court-index-single">
+            <h3 class="court-author">
+               <%= link_to (court.name),court_path(court.id)%>
+            </h3>
+              <p class="index-text">
+                場所 &nbsp;<!--空白--> <%= court.area %>
+              </p>
+              <p class="index-text">
+                コートタイプ &nbsp; <%= court.type %>
+              </p>
+            <%=link_to'編集',edit_court_path(court .id) %>
+            <%= link_to "削除", court_path(court .id), method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+    <div class="paginate text-center"><!--ページネーション-->
+      <%= paginate @court %>
+    </div>
+</div>

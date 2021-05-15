@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  area: MyText
+  image: MyString
+  access: MyText
+  opening_hour: 2021-05-06 14:26:41
+  features: MyText
+
+two:
+  name: MyString
+  type: 
+  area: MyText
+  image: MyString
+  access: MyText
+  opening_hour: 2021-05-06 14:26:41
+  features: MyText

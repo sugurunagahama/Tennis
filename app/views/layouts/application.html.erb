@@ -3,13 +3,14 @@
   <head>
     <title>Tennis　reservation</title>
     <%= csrf_meta_tags %>
-
+　　
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-    
+    <!--共通のflashメッセージ-->
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
@@ -23,23 +24,23 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <li>
-              <%= link_to "#" do %>
-                <%= image_tag "icons/serach.png" %>
+              <%= link_to courts_path do %>
+                <%= image_tag "icons/courts.png" %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <%= image_tag "icons/log_out.png" %>
               <% end %>
             </li>
           <% else %>
             <li>
-              <%= link_to "#" do %>
-                <%= image_tag "icons/serach.png" %>
+              <%= link_to courts_path do %>
+                <%= image_tag "icons/courts.png" %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to sessions_new_path do %>
                 <%= image_tag "icons/log_in.png" %>
               <% end %>
             </li>
@@ -49,8 +50,8 @@
     </nav>
     
     <%= yield %>
-    
-    <script>
+    <!--10秒かけてアラートがフェードアウトする-->
+    <script><
      $(function(){
       $(".alert").fadeOut(10000);
       });

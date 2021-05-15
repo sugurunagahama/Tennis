@@ -1,0 +1,45 @@
+<div class="court-show-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-10 ">
+          <div class="court-show-single">
+            <h2 class="text-center court-show-author">
+                  <%= @court.name %>
+                  <!--コート名表示-->
+            </h2>
+               <br><!--改行-->
+                <p class="text-center court-show-text">
+                  <%= image_tag @court.image.url%>
+                  <!--画像を表示-->
+                </p>
+               <br>
+               　<div class="box1">
+              　   <p>コート情報</p>
+              　 </div>
+              　<hr class=hr01>
+              　<!--線作成-->
+                <p class="text-center court-show-text">
+                  住所<br>
+                  <%= @court.area %>
+                </p>
+                <br>
+                <p class="text-center court-show-text">
+                  コートタイプ<br>
+                  <%= @court.type %>
+                </p>
+                <br>
+                <p class="text-center court-show-text">
+                  アクセス<br>
+                  <%= @court.access %>
+                </p>
+                <br>
+                <p class="text-center court-show-text">
+                  特徴<br>
+                  <%= @court.features %>
+                </p>
+                
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
