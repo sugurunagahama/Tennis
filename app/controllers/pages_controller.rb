@@ -1,10 +1,6 @@
 class PagesController < ApplicationController
-  def index
-  end
-  
-  def search
-  end
-  
-  def show
+  def top
+    @user = User.find_by(params[:id])
+    
   end
 end

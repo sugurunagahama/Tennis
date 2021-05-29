@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  get 'maps/index'
+  # get 'maps/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
- 
-  get 'topics/new'
 
   get 'sessions/new'
 
   root 'pages#top'
   
+  get 'pages/index'
 
   get    '/login',   to: 'sessions#new'
   #ログインページ表示
@@ -21,8 +20,5 @@ Rails.application.routes.draw do
   #一般的なrouting一括指定
   resources :courts
   
-  get 'maps/index'
-  root to: 'maps#index'
-  resources :maps, only: [:index]
-  #map作成
+  
   end

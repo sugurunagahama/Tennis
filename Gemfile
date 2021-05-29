@@ -63,4 +63,9 @@ gem "mimemagic", "0.3.7"
 gem 'kaminari'#ページネーション
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'ransack'#検索機能
-gem 'active_hash'#ハッシュデータをモデルとモデルとして定義する
+gem 'active_hash'#ハッシュデータをモデルとして定義する
+# Google map
+gem 'gmaps4rails'  # railsでGoogle mapを使えるようにする
+gem 'geocoder'#地図機能　サーバ側で経緯度情報を取得する
+gem 'gon' #コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする
+gem "dotenv-rails" #環境変数として定義する

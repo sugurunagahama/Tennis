@@ -1,7 +1,7 @@
 require "csv"
 
   
-CSV.foreach('db/court4.csv', headers: true) do |row|
+CSV.foreach('db/court10.csv', headers: true) do |row|
 
   Court.create!(
     name: row['name'],
@@ -11,6 +11,9 @@ CSV.foreach('db/court4.csv', headers: true) do |row|
     access: row['access'],
     opening_hour: row['opening_hour'],
     features: row['Features'],
-    prefecture_id: row['prefecture_id']
+    prefecture_id: row['prefecture_id'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
+    address: row['address']
   )
 end

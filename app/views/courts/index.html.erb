@@ -1,38 +1,56 @@
-<div class="court-index-wrapper">
-  <div class="container">
-      <div class="search text-center">
-      <%= search_form_for @q do |f| %><!--検索機能-->
-        <%= f.label :name, "コート名キーワード" %>
-        <%= f.search_field :name_cont %><!--:name_contはransackの部分一致-->
-        <%= f.submit "検索" %>
-      
-        <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name%><!--eqはransackの一致、prefectureを元に選択ボックス作成-->
-        <%= f.submit "検索" %>
-      <% end %>
-      
-      </div>
-    <% @courts.each do |court| %><!--コート一覧表示-->
-     
-      <div class="row">
-        <div class="col-md-offset-1 col-md-5 ">
-          <div class="court-index-single">
-            <h3 class="court-author">
-               <%= link_to (court.name),court_path(court.id)%>
-            </h3>
-              <p class="index-text">
-                場所 &nbsp;<!--空白--> <%= court.area %>
-              </p>
-              <p class="index-text">
-                コートタイプ &nbsp; <%= court.type %>
-              </p>
-            <%=link_to'編集',edit_court_path(court .id) %>
-            <%= link_to "削除", court_path(court .id), method: :delete %>
-          </div>
+      <div class="court-index-wrapper">
+        <div class="row">
+            <h3 class="index-top text-center">こんにちは！
+            <br>コート名キーワード検索か都道府県別に検索して下さい。</h3>
         </div>
+  　    　<div class="search text-center">
+                  <%= search_form_for @q , html: { class: "form" } do |f| %><!--検索機能-->
+                    <%= f.label :name%>
+                    <%= f.search_field :name_cont ,class: "field",:placeholder => "キーワード検索"%><!--:name_contはransackの部分一致-->
+                  <div class="selectbox color">
+                    <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,{ include_blank: '-地域を選択してください-' }%><!--eqはransackの一致、prefectureを元に選択ボックス作成-->
+                  </div>                                                                    <!--include_blankは空のオプションを先頭に追加-->
+                    <%= f.submit "検索" ,class: "btn btn--orange btn--radius"%>
+                  <% end %>
+          
+            <div class="court-index-container">
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                            <th>コート名</th>
+                            <th>住所</th>
+                            <th>コートタイプ</th>
+                            <th>営業時間</th>
+                            <% if current_user&.admin? %>
+                            <th>管理者</th>
+                            <% end %>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% @courts.each do |court| %><!--コート一覧表示-->
+                        <div class=row>
+                           <div class="col-md-offset-4 col-md--6">
+                        <tr>
+                            <h4 class="index-text ">
+                              <td><%= link_to (court.name),court_path(court.id)%></td>
+                              <td><%= court.area %></td>
+                              <td><%= court.type %></td>
+                              <td><%= court.opening_hour %></td>
+                              
+                              <% if logged_in? && current_user.admin %>
+                                  <td><%=link_to'編集',edit_court_path(court .id) %>,<%= link_to "削除", court_path(court .id), method: :delete%></td>
+                                  <td><%= link_to 'コート作成',new_court_path %></td>
+                              <% end %>
+                            </h4>
+                        </tr>
+                      <% end %>
+                  </tbody>
+              </table>
+                            </div>
+                        </div>
+                <div class="paginate text-center"><!--ページネーション-->
+                    <%= paginate @courts %>
+                </div>
+          </div>
+         </div>
       </div>
-    <% end %>
-  </div>
-    <div class="paginate text-center"><!--ページネーション-->
-      <%= paginate @court %>
-    </div>
-</div>

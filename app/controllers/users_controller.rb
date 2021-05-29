@@ -17,7 +17,11 @@ class UsersController < ApplicationController
       render :new
       #render　new viewが読み込まれる
    end
+   
+  
+  
   end
+  
   
   private
   def user_params

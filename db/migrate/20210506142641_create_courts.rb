@@ -9,6 +9,7 @@ class CreateCourts < ActiveRecord::Migration[5.0]
       t.string :opening_hour
       t.text :features
       t.integer :prefecture_id
+      
 
       t.timestamps
     end

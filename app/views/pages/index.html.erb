@@ -1,40 +1,32 @@
-<div class=container_top>
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <h2 class="text-white">東京</h2>
+<div class=pages_top >
+  <div class="container top-index-container">
+    <div class ="row">
+                <h1 class="text-black">こんにちは。</h1>
+                <br>
+                <h4 class="text-black">tennis reservationはテニスコートを検索できます。</h4>
+                <br>
 
-      <h1 class="text-white">テニスコート一覧</h1>
-        <div class=information>
-          <div class ="row">
-            <div class="col-md-offset-1 col-md-5">
-             <h3 class="text-white">葛飾区スポーツ施設</h3>
-               <ul>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">水元総合スポーツセンター</a>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">奥戸総合スポーツセンター体育館</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">奥戸総合スポーツセンター温水プール館</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">東金町運動場</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">小菅東スポーツ公園（事務所）</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">小菅西公園フットサル場</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">渋江公園（事務所）</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">上千葉公園運動場（事務所）</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">金町地区センター</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">新宿図書センター</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">新小岩北地区センター</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">柴又学び交流館</a></li>
-                 <li><a href="https://www.city.katsushika.lg.jp/kurashi/1000058/1002753/1003234.html"class="btn btn--orange btn--cubic btn--shadow">区役所</a></li>
-              </ul>
-
-
-
-              <h3 class="text-white">葛飾区民営テニスコート</h3>
-                <ul>
-                 <li><a href="http://himawari-tennis.co.jp/rental"class="btn btn--orange btn--cubic btn--shadow">ひまわりテニスクラブ</a></li>
-                 <li><a href="https://enspots.com/tennis/court/tokyo/katsushika-ku/uerurakettokurabu"class="btn btn--orange btn--cubic btn--shadow">ウエルラケットクラブ</a></li>
-                </ul>
-           </div>
-          </div>
-        </div>
-        
     </div>
-  </div>
+    <div class="row">
+                <h2>コート名をキーワード検索を行うか、都道府県名を入力して下さい。</h2>
+                <h2>目的のコートを選び詳細ページをご覧ください。</h2>
+                
+    </div>
+    <div class ="row">
+      　<div class="col-md-offset-4 col-md-3">
+        　<%= link_to 'コート検索',courts_path,class: 'btn btn-block btn-top' %>
+      　</div>
+      　<div class="col-md-2">
+        　<%= link_to 'ユーザー登録',new_user_path,class: 'btn btn-block btn-top' %>
+      　</div>
+    　　　<div class="col-md-2">
+        　<%= link_to 'ログイン',login_path,class: 'btn btn-block btn-top' %>
+   　　　</div>
+    </div>
+    <div class ="row">  
+      <div class="col-md-2">
+        <%= link_to 'コート作成',new_court_path,class: 'btn btn-bock btn-edit' %>
+      </div>
+    </div>
+  </div>  
 </div>

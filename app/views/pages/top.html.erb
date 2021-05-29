@@ -1,26 +1,22 @@
-<div class="top">
+<div class="pages_top">
   <div class="container top-container">
     <div class ="row">
       <div class="col-md-offset-5 col-md-6">
        　<h1 class="text-white">テニスを始めよう。</h1>
-       　<h4 class="text-white">テニスコート検索予約サイト</h4>
+       　<h2 class="text-white">Tennis Reservation</h2>
       </div>
-    </div>
+     </div>
+     <br>
     <div class ="row">
-      　<div class="col-md-offset-5 col-md-3">
-        　<%= link_to 'コート検索', courts_path, class: 'btn btn-block btn-top' %>
+      　<div class="col-md-offset-5 col-md-2">
+        　<%= link_to 'コート検索',courts_path,class: 'btn btn-block btn-top' %>
       　</div>
       　<div class="col-md-2">
-        　<%= link_to 'ユーザー登録',new_user_path,class: 'btn btn-bock btn-top' %>
+        　<%= link_to 'ユーザー登録',new_user_path,class: 'btn btn-block btn-top' %>
       　</div>
-    　　　<div class="col-md-2">
-        　<%= link_to 'ログイン',login_path,class: 'btn btn-bock btn-top' %>
+      　<div class="col-md-2">
+        　<%= link_to 'ログイン',login_path,class: 'btn btn-block btn-top' %>
    　　　</div>
     </div>
-    <div class ="row">  
-      <div class="col-md-2">
-        <%= link_to 'コート作成',new_court_path,class: 'btn btn-bock btn-edit' %>
-      </div>
-    </div> 
   </div>
 </div>

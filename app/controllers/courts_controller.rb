@@ -1,12 +1,12 @@
 class CourtsController < ApplicationController
+
   def index
-    @court = Court.all.page(params[:page]).per(5)
-    #ページネーション作成.    #５件のレコード表示
     @q = Court.ransack(params[:q])
-    @courts = @q.result(distinct: true).page(params[:page]).per(5)
+    @courts  = @q.result(distinct: true).page(params[:page]).per(10)
     #検索機能
+    @user = User.all
   end
-  
+    
   def show
     @court = Court.find_by(id: params[:id])
     #paramsでルーティングで指定したidを取得している。
@@ -29,7 +29,7 @@ class CourtsController < ApplicationController
   end
   
   def edit
-   @court = Court.find(params[:id])
+      @court = Court.find(params[:id])
   end
   
   def update
@@ -45,12 +45,10 @@ class CourtsController < ApplicationController
     @court = Court.find(params[:id])
     @court.destroy
     redirect_to courts_path
-    
-  end
-
-  private
-  def court_params
-    params.require(:court).permit(:image, :name, :type, :access, :opening_hour, :features, :area)
   end
   
+  private
+  def court_params
+    params.require(:court).permit(:image, :name, :type, :access, :opening_hour, :features, :area, :latitude, :longitude, :address)
+  end
 end

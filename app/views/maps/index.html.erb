@@ -1,62 +1,130 @@
 <h2>gmap</h2>
 
-
+<!-- 検索フォーム -->
+<br>
 <input id="address" type="textbox" value="GeekSalon">
 <input type="button" value="Encode" onclick="codeAddress()">
+<!--ボタン-->
 
-<div id="display">何かが表示される、、、、！</div>
+<div id="display">何かが表示される、、、、！</div><!--検索結果を表示させるためのディスプレイ-->
 
 
 <div id='map'></div>
 
 <style>
 #map {
-  height: 300px;
-  width: 300px;
+  height: 600px;
+  width: 600px;
 }
 </style>
 
 <script>
 let map
-
-
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    //latが緯度、lngが経度を示します
-    center: {lat: 40.7828, lng:-73.9653},
-    //数値は0〜21まで指定できます。数値が大きいほど拡大されます
+    center: {lat: 35.6803997, lng:139.769017},
     zoom: 12,
   });
-  //positionに指定した座標にピンを表示させます
+
   marker = new google.maps.Marker({
     position:  {lat: 40.7828, lng:-73.9653},
     map: map
   });
 }
-
 let geocoder
 
-const display = document.getElementById('display')
+const display = document.getElementById('display')//ディスプレイの情報を取得
 
-
+  //検索フォームのボタンが押された時に実行される
 function codeAddress(){
+  //検索フォームの入力内容を取得
   let inputAddress = document.getElementById('address').value;
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    //該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新する
     if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
       });
-      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location//検索結果をディスプレイに表示
     } else {
+      //検索結果が何もなかった場合に表示
       alert('該当する結果がありませんでした：' + status);
     }
   });   
 }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSZJURmFuHeC_HiKjxAMLND4vmJaGZwwk&callback=initMap" async defer></script>
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
+
+
+
+ <script>
+            let map
+          
+              function initMap(){
+                geocoder = new google.maps.Geocoder()
+          
+                map1 = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 35.68123620000001, lng:139.7671248},
+                    zoom: 8,
+                });
+                
+                <% @courts.each do |court| %>
+                    (function(){
+                     contentString = "住所：<%= court.address %>"; 
+          
+                     marker = new google.maps.Marker({
+                    var position:{lat: <%= court.latitude %>, lng: <%= court.longitude %>},
+                    var map: map1,
+                    var marker.setMap(map
+                    var mapOptions = {
+                        center: mapPosition,
+                        title: contentString
+                       
+                    });
+                    })();
+                <% end %>
+                }
+         
+         
+         
+         <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      
+      <div class="container">
+        <%= link_to root_path do %>
+          <span><%= image_tag "icons/logo.png", class: "navbar-brand" %></span>
+        <% end %>
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li>
+              <%= link_to courts_path do %>
+                <%= image_tag "icons/courts.png" %>
+              <% end %>
+            </li>
+            <li>
+                <%= link_to logout_path, method: :delete do %>
+                <%= image_tag "icons/log_out.png" %>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to courts_path do %>
+                <%= image_tag "icons/courts.png" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to sessions_new_path do %>
+                <%= image_tag "icons/log_in.png" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
