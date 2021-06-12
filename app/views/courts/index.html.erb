@@ -1,56 +1,58 @@
-      <div class="court-index-wrapper">
-        <div class="row">
-            <h3 class="index-top text-center">こんにちは！
-            <br>コート名キーワード検索か都道府県別に検索して下さい。</h3>
-        </div>
-  　    　<div class="search text-center">
-                  <%= search_form_for @q , html: { class: "form" } do |f| %><!--検索機能-->
-                    <%= f.label :name%>
-                    <%= f.search_field :name_cont ,class: "field",:placeholder => "キーワード検索"%><!--:name_contはransackの部分一致-->
-                  <div class="selectbox color">
-                    <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,{ include_blank: '-地域を選択してください-' }%><!--eqはransackの一致、prefectureを元に選択ボックス作成-->
-                  </div>                                                                    <!--include_blankは空のオプションを先頭に追加-->
-                    <%= f.submit "検索" ,class: "btn btn--orange btn--radius"%>
-                  <% end %>
-          
-            <div class="court-index-container">
+  <div class="court-index-wrapper">
+      <div class="row">
+          <h2 class="index-top text-center">こんにちは！</h2><br>
+          <h3 class="index-top text-center">コート名キーワード検索か都道府県別に検索して下さい。</h3>
+      </div><br>
+      <div class="row">
+          <div class="form text-center">
+              <%= search_form_for @q , html: { class: "form" } do |f| %><!--検索機能-->
+              <% f.label :name%>
+              <%= f.search_field :name_cont,class:"field",:placeholder => "キーワード検索"%><!--:name_contはransackの部分一致-->
+              <div class="selectbox color text-center">
+              <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,{ include_blank: '-地域を選択してください-' }%><!--eqはransackの一致、prefectureを元に選択ボックス作成-->
+              <%= f.submit "検索" ,class: "btn btn--search btn--radius text-center"%>
+              <% end %>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="court-index-container">
               <table class="table table-striped">
                   <thead>
                       <tr>
-                            <th>コート名</th>
-                            <th>住所</th>
-                            <th>コートタイプ</th>
-                            <th>営業時間</th>
-                            <% if current_user&.admin? %>
-                            <th>管理者</th>
-                            <% end %>
+                          <th>コート名</th>
+                          <th>住所</th>
+                          <th>コートタイプ</th>
+                          <th>営業時間</th>
+                          <% if current_user&.admin? %>
+                          <th>管理者</th>
+                          <% end %>
                       </tr>
                   </thead>
                   <tbody>
                       <% @courts.each do |court| %><!--コート一覧表示-->
-                        <div class=row>
-                           <div class="col-md-offset-4 col-md--6">
-                        <tr>
-                            <h4 class="index-text ">
+                  <div class=row>
+                      <div class="col-md-offset-4 col-md--6">
+                          <tr>
+                          <h4 class="index-text ">
                               <td><%= link_to (court.name),court_path(court.id)%></td>
                               <td><%= court.area %></td>
                               <td><%= court.type %></td>
                               <td><%= court.opening_hour %></td>
-                              
-                              <% if logged_in? && current_user.admin %>
-                                  <td><%=link_to'編集',edit_court_path(court .id) %>,<%= link_to "削除", court_path(court .id), method: :delete%></td>
-                                  <td><%= link_to 'コート作成',new_court_path %></td>
-                              <% end %>
-                            </h4>
-                        </tr>
+                          <% if logged_in? && current_user.admin %>
+                              <td><%=link_to'編集',edit_court_path(court .id) %>,<%= link_to "削除", court_path(court .id), method: :delete%></td>
+                              <td><%= link_to 'コート作成',new_court_path %></td>
+                          <% end %>
+                          </h4>
+                          </tr>
                       <% end %>
+                      </div>
+                  </div>
                   </tbody>
               </table>
-                            </div>
-                        </div>
-                <div class="paginate text-center"><!--ページネーション-->
-                    <%= paginate @courts %>
-                </div>
+              <div class="paginate text-center"><!--ページネーション-->
+                  <%= paginate @courts %>
+              </div>
           </div>
-         </div>
       </div>
+  </div>

@@ -13,46 +13,38 @@
   <body>
     <!--共通のflashメッセージ-->
     <% flash.each do |key, value| %>
-       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
-    
+    <!--ナビゲーション-->
     <div class="header"></div>
-  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-  <label for="openSidebarMenu" class="sidebarIconToggle">
+      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"></div>
     <div class="spinner horizontal"></div>
     <div class="spinner diagonal part-2"></div>
-  </label>
-  <div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-      <li>ナビゲーションメニュー <span></span></li>
-      <li><%= link_to root_path do %>
-                タイトル画面<%= image_tag "icons/logo.png", class: "navbar-brand"%> 
-          <% end %></li>
-      <% if logged_in? %>
-      <li><%= link_to courts_path do %>
-               コート検索 <%= image_tag "icons/courts.png",class: "navbar-brand"%> 
+      </label>
+    <div id="sidebarMenu">
+      <ul class="sidebarMenuInner">
+        <li>ナビゲーションメニュー <span></span></li>
+        <li><%= link_to root_path do %>タイトル画面<%= image_tag "icons/logo.png", class: "navbar-brand"%> 
+            <% end %></li>
+          <% if logged_in? %>
+        <li><%= link_to courts_path do %>コート検索 <%= image_tag "icons/courts.png",class: "navbar-brand"%> 
           <% end %>
-      </li>
-      <li><%= link_to logout_path, method: :delete do %>
-               ログアウト <%= image_tag "icons/log_out.png",class: "navbar-brand" %>
-              <% end %>
-      </li>
-         <% else %>
-      <li><%= link_to courts_path do %>
-               コート検索 <%= image_tag "icons/courts.png",class: "navbar-brand" %>
-              <% end %>
-      </li>
-      <li> <%= link_to sessions_new_path do %>
-               ログイン <%= image_tag "icons/log_in.png",class: "navbar-brand" %>
-              <% end %>
-      </li>
-              <% end %>
-    </ul>
-  </div>
-  
-
-
+        </li>
+        <li><%= link_to logout_path, method: :delete do %>ログアウト <%= image_tag "icons/log_out.png",class: "navbar-brand" %>
+          <% end %>
+        </li>
+          <% else %>
+        <li><%= link_to courts_path do %>コート検索 <%= image_tag "icons/courts.png",class: "navbar-brand" %>
+          <% end %>
+        </li>
+        <li> <%= link_to sessions_new_path do %>ログイン <%= image_tag "icons/log_in.png",class: "navbar-brand" %>
+          <% end %>
+        </li>
+          <% end %>
+      </ul>
+    </div>
     <%= yield %>
     <!--10秒かけてアラートがフェードアウトする-->
     <script>
@@ -60,7 +52,7 @@
       $(".alert").fadeOut(10000);
       });
     </script>
-   
+    <!--グーグルマップキー-->
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
     </script>   

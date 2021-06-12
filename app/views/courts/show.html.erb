@@ -1,104 +1,82 @@
 <div class="court-show-wrapper">
   <div class="show-container">
-      <div class="row">
-        <div class="col-md-10 ">
-          <div class="court-show-single">
-            <h2 class="text-center court-show-author">
-                  <%= @court.name %>
-                  <!--コート名表示-->
-            </h2>
-               <br><!--改行-->
-                <p class="text-center court-show-image">
-                  
-                   <%= image_tag @court.image.url %> 
-                  
-                  <!--画像を表示-->
-                </p>
-               
-               　<div class="box1">
-              　 <h2>コート情報</h2>
-              　 </div>
-              　
-               <%= image_tag "icons/address.png" ,class: 'sized' %>
-                <h5 class="text-left court-show-text">
-                  住所<br>
-                  </h5>
-                  <p><%= @court.area %></p>
-                
-                
-                <hr class=hr02>
-                <%= image_tag "icons/type.png" ,class: 'sized' %>
-                <h5 class="text-left court-show-text">
-                  コートタイプ<br>
-                  </h5>
-                  <p><%= @court.type %></p>
-                  
-                
-                <hr class=hr02>
-                <%= image_tag "icons/access.png" ,class: 'sized' %>
-                <h5 class="text-left court-show-text">
-                  アクセス<br>
-                </h5>
-                  <p><%= @court.access %></p>
-              
-                
-                <hr class=hr02>
-                <%= image_tag "icons/features.png" ,class: 'sized' %>
-                <h5 class="text-left court-show-text">
-                  特徴<br>
-                </h5>
-                  <p><%= @court.features %></p>
-                  
-                   <hr class=hr02>
-                <%= image_tag "icons/time.png" ,class: 'sized' %>
-                <h5 class="text-left court-show-text">
-                  営業時間<br>
-                </h5>
-                  <p><%= @court.opening_hour %></p>
-                
-                
-                <hr class=hr02>
-                 <%= image_tag "icons/map.png" ,class: 'sized' %>
-                  <h5 class="text-left court-show-text">マップ</h5>
-                 <!--#mapの表示-->
-                  <div class=show_map id="map" ></div>
-
-              <script type="text/javascript"></script >
-          <script>   function initMap(){
-               /*初期位置*/
-             var test =　{lat: <%= @court.latitude%>,lng: <%= @court.longitude%>};
-             
-                                     
-
-                                      var map = new google.maps.Map(document.getElementById('map'), {
-                                          zoom: 15,
-                                          center: test
-                                      });
-                                      var transitLayer = new google.maps.TransitLayer();
-                                      transitLayer.setMap(map);
-                              
-                                      var contentString = '住所：<%= @court.address %>';
-                                      var infowindow = new google.maps.InfoWindow({
-                                          content: contentString
-                                      });
-                                      
-                                      /*Map上の指定した位置にピンを挿して表示する*/
-                                      var marker = new google.maps.Marker({
-                                          position:test,
-                                          map: map,
-                                          title: contentString
-                                      });
-                              
-                                      marker.addListener('click', function() {
-                                          infowindow.open(map, marker);
-                                      });
-                                  }
-                                  </script>
-                     
+    <div class="row">
+      <div class="col-md-10">
+        <div class="court-show-single">
+          <h2 class="text-center court-show-author">
+            <%= @court.name %>
+          </h2>     <!--コート名表示-->
+          <br><!--改行-->
+          <p class="text-center court-show-image">
+            <%= image_tag @court.image.url %> 
+          </p>  
+            <!--画像を表示-->
+          <div class="box1">
+            <h2>コート情報</h2>
           </div>
+          <div class="court-info">
+            <%= image_tag "icons/address.png" ,class: 'sized' %>
+            <h5 class="court-show-text">住所<br></h5>
+            <p><%= @court.area %></p>
+                        
+            <hr class=hr02>
+            <%= image_tag "icons/type.png" ,class: 'sized' %>
+            <h5 class="text-left court-show-text">コートタイプ<br></h5>
+            <p><%= @court.type %></p>
+                          
+            <hr class=hr02>
+            <%= image_tag "icons/access.png" ,class: 'sized' %>
+            <h5 class="text-left court-show-text">アクセス<br></h5>
+            <p><%= @court.access %></p>
+            
+            <hr class=hr02>
+            <%= image_tag "icons/features.png" ,class: 'sized' %>
+            <h5 class="text-left court-show-text">特徴<br></h5>
+            <p><%= @court.features %></p>
+            
+            <hr class=hr02>
+            <%= image_tag "icons/time.png" ,class: 'sized' %>
+            <h5 class="text-left court-show-text">営業時間<br></h5>
+            <p><%= @court.opening_hour %></p>
+            
+            <hr class=hr02>
+            <%= image_tag "icons/reservation.png" ,class: 'sized' %>
+            <%= link_to 'コートのご予約はこちら',new_reservation_path,class: "text-left court-show-text"%>
+            <br></h5>
+            
+            <hr class=hr02>
+            <%= image_tag "icons/map.png" ,class: 'sized' %>
+            <h5 class="text-left court-show-text">マップ</h5>
+          </div>
+          <div class=show_map id="map" ></div>
+          <!--#mapの表示-->
+          <script type="text/javascript"></script >
+          <script>   function initMap(){
+             /*初期位置*/
+            var test =　{lat: <%= @court.latitude%>,lng: <%= @court.longitude%>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: test
+            });
+            var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+            var contentString = '住所：<%= @court.address %>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            }); 
+            /*Map上の指定した位置にピンを挿して表示する*/
+            var marker = new google.maps.Marker({
+                position:test,
+                map: map,
+                title: contentString
+            });
+          　　　　  marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+            }
+          </script>
         </div>
       </div>
+    </div>
   </div>
 </div>
-
-                

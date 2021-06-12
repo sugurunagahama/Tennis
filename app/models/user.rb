@@ -9,4 +9,5 @@ class User < ApplicationRecord
   #バリデーション　空白不可　パスワード正規表現　英数混合
   has_secure_password
   #password機能実装
+
 end

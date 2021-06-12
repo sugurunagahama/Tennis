@@ -1,0 +1,87 @@
+<div class="reservations-new-wrapper">
+  <div class="container">
+    <div class="row">
+       <div class="col-md-offset-4 col-md-4 reservations-new-container">
+        <h1 class="text-center text-white">コート予約します。</h1><br>
+        <h4 class="text-center text-white">・下記に情報を入れて下さい。</h4>
+        <h4 class="text-center text-white">※ユーザー登録でコート予約がスムーズになります。</h4><br>
+        <h4 class="btn-block btn-denim "><%= link_to 'ユーザー登録はこちらから',new_user_path,class: 'text-white'%></h4>
+        <%= form_for @reservation do |f| %>
+          <!--ユーザーモデルへフォーム作成-->
+        <% if logged_in? %>
+          <div class="form-group">
+            <%= f.label :コート名, class: 'text-white' %>
+            <%= f.text_field :court_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :コートの予約時間, class: 'text-white' %>
+            <%= f.text_field :time, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :予約人数, class: 'text-white' %>
+            <%= f.text_field :number, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+              <%= f.label :パスワード, class: 'text-white' %>
+              <%= f.password_field :password, value: current_user.password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+              <%= f.label :お名前, class: 'text-white' %>
+              <%= f.text_field :name, value: current_user.name,class: 'form-control' %>
+          </div>
+          <div class="form-group">
+              <%= f.label :アドレス, class: 'text-white' %>
+              <%= f.text_field :email, value: current_user.email, class: 'form-control' %>
+                  <!--テキストボックス-->
+          </div>
+          <div class="form-group">
+              <%= f.label :電話番号, class: 'text-white' %>
+              <%= f.text_field :phone_number, value: current_user.phone_number, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "コートを予約する", data: { confirm: "コートを予約しますか？"}, class: 'btn btn-block btn-solid-gold' %>
+              <!--データを送信-->
+        <% else %>
+           <div class="form-group">
+              <%= f.label :コート名, class: 'text-white' %>
+              <%= f.text_field :court_name,class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :コートの予約時間, class: 'text-white' %>
+              <%= f.text_field :time, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :予約人数, class: 'text-white' %>
+              <%= f.text_field :number, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :お名前, class: 'text-white' %>
+              <%= f.text_field :name,class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :アドレス, class: 'text-white' %>
+              <%= f.text_field :email, class: 'form-control' %>
+                  <!--テキストボックス-->
+            </div>
+            <div class="form-group">
+              <%= f.label :電話番号, class: 'text-white' %>
+              <%= f.text_field :phone_number, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :パスワード, class: 'text-white' %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :パスワード再確認, class: 'text-white' %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "コートを予約する", data: { confirm: "コートを予約しますか？" }, class: "btn btn-black btn-solid-gold "%>
+                <!--データを送信-->
+              <% end %>
+        <% end %>
+            </div> 
+           </div>
+       </div>
+    </div>
+</div>

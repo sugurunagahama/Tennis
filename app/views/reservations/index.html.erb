@@ -1,0 +1,28 @@
+ <div class="reservation-wrapper">
+     <h3 class="index-top text-center">予約一覧</h3>
+      </div><br>
+      <div class="reservation-index-container">
+         <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>コート名</th>
+                  <th>時間</th>
+                  <th>人数</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% @reservations.each do |reservation| %><!--コート一覧表示-->
+          <div class="col-md-8">
+                  <tr>
+                  <h4 class="index-text ">
+                      <td><%= link_to (reservation.court_name),reservation_path(reservation.id)%></td>
+                      <td><%= reservation.time %></td>
+                      <td><%= reservation.number %></td>
+                  </h4>
+                  </tr>
+              <% end %>
+           </tbody>
+           </table>
+           </div>
+        </div>
+  </div>

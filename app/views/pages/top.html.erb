@@ -2,21 +2,31 @@
   <div class="container top-container">
     <div class ="row">
       <div class="col-md-offset-5 col-md-6">
-       　<h1 class="text-white">テニスを始めよう。</h1>
-       　<h2 class="text-white">Tennis Reservation</h2>
+        <h1 class="text-white">テニスを始めよう。</h1><br>
+        <h3 class="text-white">Tennis Reservation</h2>
       </div>
-     </div>
-     <br>
+    </div>
+    <br>
     <div class ="row">
-      　<div class="col-md-offset-5 col-md-2">
-        　<%= link_to 'コート検索',courts_path,class: 'btn btn-block btn-top' %>
-      　</div>
-      　<div class="col-md-2">
-        　<%= link_to 'ユーザー登録',new_user_path,class: 'btn btn-block btn-top' %>
-      　</div>
-      　<div class="col-md-2">
-        　<%= link_to 'ログイン',login_path,class: 'btn btn-block btn-top' %>
-   　　　</div>
+      <div class="col-md-offset-3 col-md-2">
+        <%= link_to 'コート検索',courts_path,class: 'btn btn-block button' %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to 'コート予約',new_reservation_path,class: 'btn btn-block button' %>
+   　　</div>
+      <div class="col-md-2">
+        <%= link_to 'ユーザー登録',new_user_path,class: 'btn btn-block button' %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to 'ログイン',login_path,class: 'btn btn-block button' %>
+   　　</div>
+   　</div>
+   　<div class ="row">
+   　　<% if logged_in? && current_user.admin %>
+   　　<div class="col-md-offset-5  col-md-4">
+        <%= link_to '管理者予約一覧',reservations_path,class: 'btn btn-block button' %>
+   　　</div>
+   　　<% end %>
     </div>
   </div>
 </div>
