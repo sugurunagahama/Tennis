@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
   
   def new
     @reservation = Reservation.new
+    @court = Court.find_by(id: params[:id])
   end
   
   def create

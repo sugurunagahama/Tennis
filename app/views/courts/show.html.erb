@@ -17,27 +17,27 @@
           <div class="court-info">
             <%= image_tag "icons/address.png" ,class: 'sized' %>
             <h5 class="court-show-text">住所<br></h5>
-            <p><%= @court.area %></p>
+            <p class="court-show-main"><%= @court.area %></p>
                         
             <hr class=hr02>
             <%= image_tag "icons/type.png" ,class: 'sized' %>
             <h5 class="text-left court-show-text">コートタイプ<br></h5>
-            <p><%= @court.type %></p>
+            <p class="court-show-main"><%= @court.type %></p>
                           
             <hr class=hr02>
             <%= image_tag "icons/access.png" ,class: 'sized' %>
             <h5 class="text-left court-show-text">アクセス<br></h5>
-            <p><%= @court.access %></p>
+            <p class="court-show-main"><%= @court.access %></p>
             
             <hr class=hr02>
             <%= image_tag "icons/features.png" ,class: 'sized' %>
             <h5 class="text-left court-show-text">特徴<br></h5>
-            <p><%= @court.features %></p>
+            <p class="court-show-main"><%= @court.features %></p>
             
             <hr class=hr02>
             <%= image_tag "icons/time.png" ,class: 'sized' %>
-            <h5 class="text-left court-show-text">営業時間<br></h5>
-            <p><%= @court.opening_hour %></p>
+            <h5 class="text-left court-show-text">営業時間</h5>
+            <p class="court-show-main"><%= @court.opening_hour %></p>
             
             <hr class=hr02>
             <%= image_tag "icons/reservation.png" ,class: 'sized' %>
