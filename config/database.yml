@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: Tennis_production
-  username: Tennis
-  password: <%= ENV['TENNIS_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
