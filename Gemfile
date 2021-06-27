@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
+gem 'rails','~> 5.0.7', '>= 5.0.7.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0', group: :development
 # Use Puma as the app server
@@ -43,7 +43,6 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
-  gem 'dotenv-rails'
 
 end
 
@@ -74,4 +73,3 @@ gem 'gmaps4rails'  # railsでGoogle mapを使えるようにする
 gem 'geocoder'#地図機能　サーバ側で経緯度情報を取得する
 gem 'gon' #コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする
 gem "dotenv-rails" #環境変数として定義する
-gem 'fog-aws'#S3画像アップロード
