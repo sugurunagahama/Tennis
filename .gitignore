@@ -17,3 +17,4 @@
 .byebug_history
 # Ignore master key for decrypting credentials and more.
 /.env
+.env*

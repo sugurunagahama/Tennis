@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'dotenv-rails'
 
 end
 
@@ -73,3 +74,4 @@ gem 'gmaps4rails'  # railsでGoogle mapを使えるようにする
 gem 'geocoder'#地図機能　サーバ側で経緯度情報を取得する
 gem 'gon' #コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする
 gem "dotenv-rails" #環境変数として定義する
+gem 'fog-aws'#S3画像アップロード
