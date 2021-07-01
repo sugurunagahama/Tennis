@@ -12,42 +12,42 @@
 
 ActiveRecord::Schema.define(version: 20210531114302) do
 
-  create_table "courts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.string "type"
-    t.text "area"
-    t.string "image"
-    t.text "access"
-    t.string "opening_hour"
-    t.text "features"
-    t.integer "prefecture_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "latitude", limit: 24
-    t.float "longitude", limit: 24
-    t.string "address"
+  create_table "courts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "type"
+    t.text     "area",          limit: 65535
+    t.string   "image"
+    t.text     "access",        limit: 65535
+    t.string   "opening_hour"
+    t.text     "features",      limit: 65535
+    t.integer  "prefecture_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.float    "latitude",      limit: 24
+    t.float    "longitude",     limit: 24
+    t.string   "address"
   end
 
-  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone_number"
-    t.string "password_digest"
-    t.string "court_name"
-    t.string "time"
-    t.string "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "reservations", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "password_digest"
+    t.string   "court_name"
+    t.string   "time"
+    t.string   "number"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.boolean "admin", default: false
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "password_digest"
+    t.boolean  "admin",           default: false
   end
 
 end
