@@ -19,7 +19,7 @@ class CourtsController < ApplicationController
 
   def create
     @court = Court.new(court_params)
-
+    #binding.pry
     if @court.save
      redirect_to courts_path, success: 'コート作成しました'
     else
